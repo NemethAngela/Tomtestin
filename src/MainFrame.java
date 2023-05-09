@@ -19,7 +19,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initComponent() {
-        this.tomegPanel = new InputPanel("Tömeg");
+        this.tomegPanel = new InputPanel("Tömeg (kg)");
         this.magassagPanel = new InputPanel("Magassag");
         this.buttonPanel = new JPanel();
         this.indexPanel = new InputPanel("Testtömeg index");
@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
     }
 
     public double calcBodyIndex(double weight, double height) {
-        return 0;
+        return weight / Math.pow(height, 2);
     }
 
     private void setFrame() {
