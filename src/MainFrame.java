@@ -1,5 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
@@ -42,8 +43,13 @@ public class MainFrame extends JFrame {
 
     private void startCalc() {
         String tomegStr = this.tomegPanel.getValue();
+        if(!this.checkInput(tomegStr)) {
+            JOptionPane.showMessageDialog(this, "Csak számjegy");
+        }
         double tomeg = Double.parseDouble(tomegStr);
         String magassagStr = this.magassagPanel.getValue();
+        if(!this.checkInput(magassagStr)) {
+            JOptionPane.showMessageDialog(this, "Csak számjegy");
         double magassag = Double.parseDouble(magassagStr);
         Double testtomegIndex = this.calcBodyIndex(tomeg, magassag);    //direkt van nagy D-vel, így működik a toString
         this.indexPanel.setValue(testtomegIndex.toString());
@@ -51,6 +57,13 @@ public class MainFrame extends JFrame {
 
     public double calcBodyIndex(double weight, double height) {
         return weight / Math.pow(height, 2);
+    }
+
+    public boolean checkInput(String input) {
+       if(input.matches("[0-9]+")) {   //a + azt jelenti, hogy min. egynek kell lennie
+        ok = true;
+       }
+       return ok;
     }
 
     private void setFrame() {
