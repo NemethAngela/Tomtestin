@@ -45,11 +45,14 @@ public class MainFrame extends JFrame {
         String tomegStr = this.tomegPanel.getValue();
         if(!this.checkInput(tomegStr)) {
             JOptionPane.showMessageDialog(this, "Csak számjegy");
+            return;
         }
         double tomeg = Double.parseDouble(tomegStr);
         String magassagStr = this.magassagPanel.getValue();
         if(!this.checkInput(magassagStr)) {
             JOptionPane.showMessageDialog(this, "Csak számjegy");
+            return;
+        }
         double magassag = Double.parseDouble(magassagStr);
         Double testtomegIndex = this.calcBodyIndex(tomeg, magassag);    //direkt van nagy D-vel, így működik a toString
         this.indexPanel.setValue(testtomegIndex.toString());
@@ -60,7 +63,8 @@ public class MainFrame extends JFrame {
     }
 
     public boolean checkInput(String input) {
-       if(input.matches("[0-9]+")) {   //a + azt jelenti, hogy min. egynek kell lennie
+        boolean ok = false;
+       if(input.matches("[0-9.]+")) {   //a + azt jelenti, hogy min. egynek kell lennie, el kell fogadni pontot is
         ok = true;
        }
        return ok;
