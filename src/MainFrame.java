@@ -1,3 +1,4 @@
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,7 +12,6 @@ public class MainFrame extends JFrame {
         this.setFrame();    //nem itt állítjuk  be az ablakot, a konstruktor nem erre való, itt csak meghívjuk
         this.initComponent();
         this.addComponent();
-        
     }
 
     private void initComponent() {
@@ -29,7 +29,7 @@ public class MainFrame extends JFrame {
     }
 
     private void setFrame() {
-        this.setLayout (new BoxLayout(this.getContentPanel(), BoxLayout.PAGE_AXIS));
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    //enélkül nem lép ki 
         //this.setSize(300, 200);
         this.pack();    // így felveszi a komponens nevét, nem kell méretezgetni
