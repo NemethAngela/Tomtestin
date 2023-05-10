@@ -16,7 +16,7 @@ public class CalcTest {
     public void testCalcBodyIndex() {
         double actual = this.mainFrame.calcBodyIndex(100, 1.8);
         double expected = 44.5;
-        assertEquals(expected, actual, delta);
+        assertEquals(expected, actual);
     }
 
     @Test   //jupiteres kell
