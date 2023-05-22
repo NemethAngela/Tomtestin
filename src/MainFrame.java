@@ -16,12 +16,11 @@ public class MainFrame extends JFrame {
         this.initComponent();
         this.addComponent();
         this.handleEvent();
-        this.startCalc();
     }
 
     private void initComponent() {
         this.tomegPanel = new InputPanel("Tömeg (kg)");
-        this.magassagPanel = new InputPanel("Magassag");
+        this.magassagPanel = new InputPanel("Magassag (cm)");
         this.buttonPanel = new JPanel();
         this.indexPanel = new InputPanel("Testtömeg index");
         this.calcButton = new JButton("Számít");
@@ -37,7 +36,7 @@ public class MainFrame extends JFrame {
 
     private void handleEvent() {    //eseménykezelő
         this.calcButton.addActionListener(e  -> {   //javascript-ben = kell, itt javaban -
-
+            startCalc();
         });    
     }
 
@@ -55,19 +54,19 @@ public class MainFrame extends JFrame {
         }
         double magassag = Double.parseDouble(magassagStr);
         Double testtomegIndex = this.calcBodyIndex(tomeg, magassag);    //direkt van nagy D-vel, így működik a toString
-        this.indexPanel.setValue(testtomegIndex.toString());
+        this.indexPanel.setValue(String.format("%2.2f", testtomegIndex));
     }
 
     public double calcBodyIndex(double weight, double height) {
-        return weight / Math.pow(height, 2);
+        return weight / Math.pow(height, 2) * 10000.0;
     }
 
     public boolean checkInput(String input) {
         boolean ok = false;
-       if(input.matches("[0-9.]+")) {   //a + azt jelenti, hogy min. egynek kell lennie, el kell fogadni pontot is
-        ok = true;
-       }
-       return ok;
+        if(input.matches("[0-9.]+")) {   //a + azt jelenti, hogy min. egynek kell lennie, el kell fogadni pontot is
+            ok = true;
+        }
+        return ok;
     }
 
     private void setFrame() {

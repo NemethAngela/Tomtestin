@@ -12,23 +12,23 @@ public class CalcTest {
         this.mainFrame = new MainFrame();
     }
 
-    @Test   
+    @Test   //jupiterest választjuk a felkínáltakból
     public void testCalcBodyIndex() {
-        double actual = this.mainFrame.calcBodyIndex(100, 1.8);
-        double expected = 44.5;
-        assertEquals(expected, actual);
+        double actual = this.mainFrame.calcBodyIndex(100, 180);
+        double expected = 30.86;
+        assertEquals(expected, actual, 0.01);
     }
 
-    @Test   //jupiteres kell
+    @Test  
     public void testCalcBodyIndexBottom() {     //alsó értéket vizsgáljuk Bottom
-        double actual = this.mainFrame.calcBodyIndex(100, 1.8);
-        double expected = 0.34;
+        double actual = this.mainFrame.calcBodyIndex(100, 180);
+        double expected = 30.86;
         assertEquals(expected, actual, 0.01);
     }
 
     @Test   //még egy teszt
     public void testCalcBodyIndexTop() {
-        double actual = this.mainFrame.calcBodyIndex(600, 2.5);
+        double actual = this.mainFrame.calcBodyIndex(600, 250);
         double expected = 96.0;
         assertEquals(expected, actual, 0.01);
     }

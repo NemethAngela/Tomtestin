@@ -15,12 +15,12 @@ public class InputTest {
     @Test
     public void testCheckInputAlpha() {
         boolean actual = this.mainFrame.checkInput("a");
-        assertFalse(actual);        //az importálások fontosak, hogy a jupitereset válasszuk
+        assertFalse(actual);        //az importálásnál fontosak, hogy a jupitereset válasszuk
     }
 
     @Test
     public void testCheckInputNum() {
-        boolean actual = this.mainFrame.checkInput("a");
+        boolean actual = this.mainFrame.checkInput("12.3");
         assertTrue(actual);
     }
 }
